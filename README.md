@@ -2,6 +2,8 @@
 
 > A simple React Component for parallax effect on the front layer.
 
+![alt tag](https://cloud.githubusercontent.com/assets/76567/14335829/3d14bcec-fc99-11e5-9483-04c8d9e6fb5f.gif)
+
 ## Install
 
 ```sh
