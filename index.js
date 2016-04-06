@@ -4,7 +4,9 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 
 // Limiting position
-let clamp = (x, low, high) => Math.min(Math.max(x, low), high)
+var clamp = function clamp(x, low, high) {
+  return Math.min(Math.max(x, low), high);
+};
 
 module.exports = React.createClass({
   // Define initial values
