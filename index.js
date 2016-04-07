@@ -3,27 +3,30 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-// Limiting position
-var clamp = function clamp(x, low, high) {
-  return Math.min(Math.max(x, low), high);
-};
-
 module.exports = React.createClass({
   // Define initial values
   getInitialState: function(){
     return {
-      speed: this.props.speed ? this.props.speed : 100, // Check if property speed is present if not set default value
-      style: {}
+      speedDivider: this.props.speedDivider ? this.props.speedDivider : 4, // Check if property speed is present if not set default value
+      backgroundStyle: this.props.backgroundStyle ? this.props.backgroundStyle : '', // Check if thers is a direct style applied to the parallax background
     }    
   },
   componentDidMount: function() {
     // Add event listener to the window
-    window.addEventListener('scroll', this._calcTranslation)
+    window.addEventListener('scroll', setInterval(this._calcTranslation), 10);
 
-    // Set inline style attributes
-    if(this.props.style != 'undefined') {
-      this.refs.parallax.setAttribute('style', this.props.style);
+    // Set basic style rules for a parallax effect
+    this.refs.background.setAttribute('style', 'width: 100%; top: 0; bottom: 0; background-size: cover ;background-position: 50% 0; background-repeat: no-repeat;');
+
+    for(var key in this.state.backgroundStyle) {
+      this.refs.background.style[key] = this.state.backgroundStyle[key];
     }
+
+    // Set properties directly to avoid possible defined inline style
+    this.refs.content.style.position = 'absolute';
+    this.refs.content.style.left = 0;
+    this.refs.content.style.right = 0;
+
   },
   componentWillUnmount: function() {
     // Remove event listener to the window
@@ -32,22 +35,21 @@ module.exports = React.createClass({
   _calcTranslation: function() {
     // Calculate the translation CSS property
     var _window = window;
-    var scrollY = _window.scrollY;
-    var el = ReactDOM.findDOMNode(this);
-    var offsetTop = el.offsetTop;
-    var offsetHeight = el.offsetHeight;
-    var d = (scrollY - offsetTop) * .75 / offsetHeight;
-    var t = "translateY(-" + clamp((d * this.state.speed).toFixed(2), (-.25 * offsetHeight).toFixed(2), (.75 * offsetHeight).toFixed(2)) + "px) translateZ(0)";
+    var translateValue = _window.scrollY / this.state.speedDivider;
+    if (translateValue < 0) {
+      translateValue = 0;
+    }
 
-    // Set CSS property
-    this.setState({
-     style: {
-          transform: t
-      }
-    })
-
+    // Aplly the transform to the background element
+    var translate = 'translate3d(0px,' + translateValue + 'px, 0px)';
+    this.refs.background.style.transform = translate;
   },
   render: function() {
-    return React.createElement('div', Object.assign({}, this.props, { style : this.state.style }, { ref: 'parallax' }));
+    // Create and render elements
+    var content = React.createElement('div', Object.assign({}, this.props,  { ref: 'content' }));
+    var background = React.createElement('div', Object.assign({}, { ref: 'background', className: 'react-simple-parallax-bg' }));
+    return(
+      React.createElement('div', Object.assign({}, { ref: 'root' }), background, content)
+    )
   }
 });

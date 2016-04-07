@@ -6,13 +6,17 @@ class App extends React.Component {
   render () {
 
 	var section = {
-		textAlign: 'center',
-		height: "1500px",
-		background: 'url(http://i-cdn.phonearena.com/images/articles/215289-image/Stock-LG-V10-wallpapers.jpg)'
+		textAlign: 'center'
 	}
 
+  var background = {
+      height: "1000px",
+      backgroundImage: 'url(http://tinyurl.com/zaz7bp4)'
+  }
+
 	var box = {
-		background: 'rgba(0,0,0,0.5)',
+		top: "300px",
+		background: 'rgba(0,0,0,0.8)',
 		margin: 'auto',
 		color: '#fff',
 		fontSize: '40px',
@@ -23,8 +27,8 @@ class App extends React.Component {
 
 	return (
 		<section style={section}>
-		  	<Parallax speed="400" style="padding-top: 600px">
-		  		<div style={box}></div>
+				<Parallax style={box} className="parallax" speedDivider="5" backgroundStyle={background}>
+		  		<p>Hello World!</p>
 		  	</Parallax>
 		</section>
 	);

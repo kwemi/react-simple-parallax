@@ -17,8 +17,8 @@ import Parallax from 'react-simple-parallax';
 class App extends React.Component {
   render () {
 	return (
-		<section style={section}>
-		  	<Parallax speed="400" style="padding-top: 600px">
+		<section>
+		  	<Parallax className="parallax" speedDivider="5">
 		  		<div>Hello Wolrd!</div>
 		  	</Parallax>
 		</section>
@@ -26,7 +26,41 @@ class App extends React.Component {
   }
 }
 ```
-## Build exemple
+## Basic styling
+
+```css
+    section {
+        text-align: center;
+    }
+    
+    /* .react-simple-parallax-bg is generate by the component */
+    section .react-simple-parallax-bg {
+        background-image: url('http://tinyurl.com/zaz7bp4');
+        height: 750px;
+    }
+    
+    section .parallax {
+        top: 200px;
+        margin: auto;
+    }
+```
+## Attributes
+- **speedDivider**: controle translation speed (default: 5)
+- **backgroundStyle**: to set the style of the background element with a javascript object (optional)
+
+#### Exemple
+```javascript
+  render () {
+	var background = {
+		height: "1000px",
+		backgroundImage: 'url(http://tinyurl.com/zaz7bp4)'
+	}
+	return (
+		<section>
+		  	<Parallax speedDivider="3" backgroundStyle={background}>
+```
+
+## Build the exemple
 
 Initial set up
 
