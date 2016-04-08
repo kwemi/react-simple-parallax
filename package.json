@@ -1,7 +1,7 @@
 {
   "name": "react-simple-parallax",
-  "version": "0.2.0",
-  "description": "A simple React Component for parallax effect on the front layer.",
+  "version": "0.2.1",
+  "description": "A simple React Component for parallax effect.",
   "repository": {
     "type": "git",
     "url": "https://github.com/kwemi/react-simple-parallax.git"
@@ -12,8 +12,8 @@
     "dev": "NODE_ENV=development && webpack-dev-server --progress --config webpack.config.dev.js"
   },
   "dependencies": {
-    "react": "^0.14.8",
-    "react-dom": "^0.14.8"
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0"
   },
   "devDependencies": {
     "babel-loader": "^6.2.4",
