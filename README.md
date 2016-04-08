@@ -48,7 +48,7 @@ class App extends React.Component {
 - **speedDivider**: controle translation speed (default: 5)
 - **backgroundStyle**: to set the style of the background element with a javascript object (optional)
 
-#### Exemple
+#### Example
 ```javascript
   render () {
 	var background = {
