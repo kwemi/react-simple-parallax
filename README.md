@@ -19,7 +19,7 @@ class App extends React.Component {
 	return (
 		<section>
 		  	<Parallax className="parallax" speedDivider="5">
-		  		<div>Hello Wolrd!</div>
+		  		<div>Hello World!</div>
 		  	</Parallax>
 		</section>
 	);
@@ -48,7 +48,7 @@ class App extends React.Component {
 - **speedDivider**: controle translation speed (default: 5)
 - **backgroundStyle**: to set the style of the background element with a javascript object (optional)
 
-#### Exemple
+#### Example
 ```javascript
   render () {
 	var background = {
