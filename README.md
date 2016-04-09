@@ -7,7 +7,7 @@
 ## Install
 
 ```sh
-npm install -S react-parallax
+npm install -S react-simple-parallax
 ```
 ## Usage
 
