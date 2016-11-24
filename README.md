@@ -58,9 +58,12 @@ class App extends React.Component {
 	return (
 		<section>
 		  	<Parallax speedDivider="3" backgroundStyle={background}>
+		</section>
+		)
+  }
 ```
 
-## Build the exemple
+## Build the example
 
 Initial set up
 
@@ -74,7 +77,7 @@ Install Webpack
 npm install webpack -g
 ```
 
-Build the exemple
+Build the example
 
 ```sh
 webpack
