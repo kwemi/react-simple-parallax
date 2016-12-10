@@ -41,7 +41,11 @@ module.exports = React.createClass({
 
     // Aplly the transform to the background element
     var translate = 'translate3d(0px,' + translateValue + 'px, 0px)';
-    this.refs.background.style.transform = translate;
+    
+    // Check if background exists and then apply
+    if (this.refs.background) {
+      this.refs.background.style.transform = translate;
+    }
   },
   render: function() {
     // Create and render elements
